@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-body {
+#root {
     background-color: var(--background-pri);
     color: var(--text-color);
 
@@ -31,6 +31,10 @@ a:hover {
     text-decoration: underline;
 }
 
+button {
+    cursor: pointer;
+}
+
 /* Esquema de cores */
 
 ::-webkit-scrollbar {
@@ -41,12 +45,12 @@ a:hover {
     background-color: var(--scrollbar-thumb-color);
 }
 
-:root {
+#root {
     --text-color: hsl(0, 0%, 0%);
     --title-color: hsl(0, 0%, 0%);
 
     --aux-color: hsl(0, 0%, 64%);
-    --svg-color: hsl(0, 0%, 64%);
+    --svg-color: hsl(0, 0%, 65%);
 
     --background-pri: hsl(0, 0%, 100%);
     --background-sec: hsl(0, 0%, 96%);
@@ -57,11 +61,11 @@ a:hover {
     --scrollbar-thumb-color: #a6a6a6;
 }
 
-body.dark {
+#root.dark {
     --text-color: hsl(0, 0%, 75%);
     --title-color: hsl(0, 0%, 88%);
 
-    --svg-color: hsl(0, 0%, 46%);
+    --svg-color: hsl(0, 0%, 47%);
 
     --background-pri: hsl(0, 0%, 13%);
     --background-sec: hsl(0, 0%, 16%);
@@ -69,16 +73,16 @@ body.dark {
     --background-qua: hsl(0, 0%, 22%);
 
     --scrollbar-color: #333;
-    --scrollbar-thumb-color: #777;
+    --scrollbar-thumb-color: #787878;
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
+    #root {
         --text-color: hsl(0, 0%, 75%);
         --title-color: hsl(0, 0%, 88%);
 
         --aux-color: hsl(0, 0%, 46%);
-        --svg-color: hsl(0, 0%, 46%);
+        --svg-color: hsl(0, 0%, 47%);
 
         --background-pri: hsl(0, 0%, 13%);
         --background-sec: hsl(0, 0%, 16%);
@@ -89,12 +93,12 @@ body.dark {
         --scrollbar-thumb-color: #777;
     }
 
-    body.light {
-        --text-color: hsl(0, 0%, 0%);
+    #root.light {
+        --text-color: hsl(0, 0%, 6%);
         --title-color: hsl(0, 0%, 0%);
 
         --aux-color: hsl(0, 0%, 64%);
-        --svg-color: hsl(0, 0%, 64%);
+        --svg-color: hsl(0, 0%, 65%);
 
         --background-pri: hsl(0, 0%, 100%);
         --background-sec: hsl(0, 0%, 96%);

@@ -9,44 +9,32 @@
     let theme: 'dark' | 'light' | null;
     let complete = false;
 
-    const setTheme = async (theme: 'dark' | 'light') => {
-        await tick();
-        
-        const root = document.querySelector('body')!;
-        root.classList.remove('light', 'dark');
-        root.classList.add(theme);
-        
-        localStorage.setItem('theme', theme);
-    }
-
     onMount(() => {
         theme = localStorage.getItem('theme') as 'dark' | 'light' | null;
         
         theme ? theme : window.matchMedia("(prefers-color-scheme: dark)").matches ? theme = 'dark' : theme = 'light';
-        setTheme(theme);
 
         complete = true;
     });
+
+    $: theme;
 </script>
 
 <Title title/>
 
-{#if complete}
-    <Header {theme} {setTheme}/>
-        <main>
+<div id="root" class={theme}>
+    {#if complete}
+        <Header bind:theme/>
             <slot/>
-        </main>
-    <Footer/>
-{:else}
-    <Loading/>
-{/if}
+        <Footer/>
+        
+    {:else}
+        <Loading/>
+    {/if}
+</div>
 
 
 
 
 <style>
-    main {
-        display: flex;
-        min-height: 100vh;
-    }
 </style>
