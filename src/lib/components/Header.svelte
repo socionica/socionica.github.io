@@ -192,7 +192,7 @@
             background-color: var(--background-sec);
             z-index: 1;
 
-            transition: transform .1s ease;
+            transition: width .1s ease;
         }
 
             .menu-head {
