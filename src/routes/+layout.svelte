@@ -35,8 +35,6 @@
         background-color: var(--background-pri);
         color: var(--text-color);
         font-family: 'Segoe UI', 'Roboto', sans-serif;
-        
-        min-height: calc(100vh + 8rem);
     }
 
     @media (max-width: 968px) {
