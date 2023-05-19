@@ -91,4 +91,22 @@
             aside {
                 grid-column: 2;
             }
+
+    @media (max-width: 968px) {
+        main {
+            display: block;
+        }
+
+        .sidebar {
+            display: none;
+        }
+
+        .article-container {
+            display: block;
+        }
+        
+        aside {
+            display: none;
+        }
+    }
 </style>

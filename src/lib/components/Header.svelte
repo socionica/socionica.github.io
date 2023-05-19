@@ -7,9 +7,55 @@
         theme == 'dark' ? theme = 'light' : theme = 'dark';
         localStorage.setItem('theme', theme);
     };
+
+    const toggleMenu = () => {
+        const menu = document.querySelector('.menu') as HTMLElement;
+        const header = document.querySelector('header') as HTMLElement;
+    
+        menu.style.width ? menu.style.width : menu.style.width = '0%'
+        
+        if (menu.style.width == '0%') {
+            menu.style.width = 'calc(100% - 3.75rem)';
+            header.style.transform = 'translateX(calc(100% - 3.75rem))'
+        } else {
+            menu.style.width = '0%';
+            header.style.transform = 'translateX(0)'
+        }
+    }
 </script>
 
+<div class="menu">
+    <div class="menu-head">
+        <h2>Central Sociônica</h2>
+        <button class="change-theme-btn" on:click={changeTheme}>
+            <svg
+            viewBox="0 0 190.5 190.49999"
+            version="1.1"
+            class={theme}
+            xmlns="http://www.w3.org/2000/svg">
+                <path
+                id="path17429"
+                style="fill:#848484;fill-opacity:0;stroke:currentcolor;stroke-width:26.4354;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+                d="m 153.31432,153.31432 a 82.115347,82.115347 0 0 1 -116.128638,0 82.115347,82.115347 0 0 1 -3e-6,-116.12864 82.115347,82.115347 0 0 1 116.128641,0 82.115347,82.115347 0 0 1 0,116.12864 z" />
+                <path
+                style="fill:currentcolor;fill-opacity:1;stroke:none;stroke-width:26.4354;stroke-linecap:round;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
+                d="M 37.185685,153.31432 153.31432,37.185682 c 0,0 58.06432,78.942948 0,116.128638 -58.064317,37.18568 -116.128635,0 -116.128635,0 z"
+                id="path17486" />
+            </svg>
+        </button>
+    </div>
+    <nav class="menu-nav">
+        <Navigation/>
+    </nav>
+</div>
 <header>
+    <div class="toggle-menu">
+        <button class="toggle-menu-btn" on:click={toggleMenu}>
+            <div class="line"/>
+            <div class="line"/>
+            <div class="line"/>
+        </button>
+    </div>  
     <div class="logo-container">
         <a class="header-logo" href="/">
             <svg
@@ -101,7 +147,6 @@
             flex: 1;
 
             display: flex;
-            flex-flow: row-reverse;
             place-content: space-around;
         }
 
@@ -126,5 +171,93 @@
             .change-theme-btn svg.light {
                 transform: rotateZ(180deg);
             }
+    
+    .menu {
+        display: none;
+        width: 0;
+    }
+
+        .toggle-menu-btn {
+            display: none;
+        }
+    
+    @media (max-width: 968px) {
+        .menu {
+            display: block;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+
+            background-color: var(--background-sec);
+            z-index: 1;
+
+            transition: .1s ease;
+        }
+
+            .menu-head {
+                height: 4rem;
+                overflow: hidden;
+
+                display: flex;
+                place-content: center;
+                place-items: center;
+            }
+
+                .change-theme-btn {
+                    margin-right: 0;
+                }
+
+            .menu-nav {
+                height: calc(100% - 4rem);
+                overflow-y: scroll;
+            }
+
+        header {
+            display: flex;
+            place-content: space-between;
+            
+            transition: transform .1s ease;
+        }
+
+            .toggle-menu {
+                background-color: var(--background-sec);
+                border-radius: 0 1rem 1rem 0;
+                height: 3.5rem;
+                width: 3.5rem;
+                margin: .25rem 0;
+                padding: 1rem;
+                padding-left: .75rem;
+
+                display: block;
+            }
+
+                .toggle-menu-btn {
+                    background: none;
+                    border: none;
+                    height: 100%;
+                    width: 100%;
+
+                    display: flex;
+                    flex-flow: column;
+                    place-items: center;
+                    place-content: space-around;
+                }
+
+                    .line {
+                        background-color: var(--svg-color);
+                        border-radius: 3px;
+                        height: 20%;
+                        width: 100%;
+                    }
+
+            .header-logo {
+                margin: 0 1rem;
+            }
+                
+        .navigation-container {
+            display: none;
+        }
+    }
 </style>
 

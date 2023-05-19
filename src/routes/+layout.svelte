@@ -16,8 +16,6 @@
 
         complete = true;
     });
-
-    $: theme;
 </script>
 
 <Title title/>
@@ -27,14 +25,23 @@
         <Header bind:theme/>
             <slot/>
         <Footer/>
-        
     {:else}
         <Loading/>
     {/if}
 </div>
 
-
-
-
 <style>
+    #root {
+        background-color: var(--background-pri);
+        color: var(--text-color);
+        font-family: 'Segoe UI', 'Roboto', sans-serif;
+        
+        min-height: calc(100vh + 8rem);
+    }
+
+    @media (max-width: 968px) {
+        #root {
+            overflow-x: hidden;
+        }
+    }
 </style>

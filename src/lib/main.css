@@ -4,13 +4,6 @@
     padding: 0;
 }
 
-#root {
-    background-color: var(--background-pri);
-    color: var(--text-color);
-
-    font-family: 'Segoe UI', 'Roboto', sans-serif;
-}
-
 article * {
     margin: 0.5rem 0;
     text-align: justify;

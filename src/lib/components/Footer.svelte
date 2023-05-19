@@ -1,5 +1,5 @@
 <footer>
-    <div>Código fonte disponível no <a href="https://github.io">GitHub</a></div>
+    <div>Código fonte disponível no <a href="https://github.io/socionica/socionica.github.io">GitHub</a></div>
     <svg
     viewBox="0 0 190.5 190.49999"
     version="1.1"
@@ -44,28 +44,34 @@
         place-items: center;
     }
 
-    svg {
-        height: 3rem;
-        margin: .5rem;
-        color: var(--svg-color);
-    }
+        svg {
+            height: 3rem;
+            margin: .5rem;
+            color: var(--svg-color);
+        }
 
-    div {
-        font-size: .9rem;
-        text-align: center;
-        width: 16rem;
-    }
+        div {
+            font-size: .9rem;
+            text-align: center;
+            width: 16rem;
+        }
 
-    nav {
-        width: 16rem;
+        nav {
+            width: 16rem;
 
-        display: flex;
-        place-content: space-around;
-    }
+            display: flex;
+            place-content: space-around;
+        }
 
-    nav a {
-        color: var(--text-color);
-        text-decoration: none;
-        font-weight: 600;
+            nav a {
+                color: var(--text-color);
+                text-decoration: none;
+                font-weight: 600;
+            }
+
+    @media (max-width: 968px) {
+        svg, div {
+            display: none;
+        }
     }
 </style>

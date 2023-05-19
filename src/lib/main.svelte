@@ -1,15 +1,8 @@
 <script context="module" lang="ts">
     export const pages = new Map ([
-            // Página inicial
-        ['/', 'Central Sociônica'],
-
-            // Comunidade
-        ['/comunidade/', 'Comunidade'],
-
-            // Ferramentas
-        ['/ferramentas/', 'Testes e Utilitários'],
-            ['/ferramentas/teste-sociotipo/', 'Teste de Sociotipo'],
-            
+            // Artigos
+        ['/artigos/', 'Artigos'],
+        
             // Arquivos
         ['/arquivos/', 'Arquivos'],
 
@@ -91,7 +84,43 @@
                 ['/arquivos/relacoes-intertipicas/supervisao/', 'Supervisão'],
                 ['/arquivos/relacoes-intertipicas/beneficio/', 'Benefício'],
 
-            // Artigos
-        ['/artigos/', 'Artigos'],
+            // Ferramentas
+        ['/ferramentas/', 'Testes e Utilitários'],
+            ['/ferramentas/teste-sociotipo/', 'Teste de Sociotipo'],
+
+            // Comunidade
+        ['/comunidade/', 'Comunidade'],
     ]);
+
+    export const parsePath = (path: string, module: 'root' | 'roots' | 'parent' | 'parents' | 'children' | 'direct children' | 'local'): string | string[] => {
+        const paths = Array.from(pages.keys());
+        switch (module) {
+            case "root":
+                const root = '/' + path.split('/')[1] + '/';
+                return root;
+            case "roots":
+                const roots = paths.filter(p => p.split('/').length === 3);
+                return roots;
+            case "parent":
+                const parent = paths.find(p => p == path.slice(0, path.lastIndexOf('/', path.lastIndexOf('/') -1) + 1)) || '/';
+                return parent;
+            case "parents":
+                const parents: string[] = [];
+                for (let i = 0; i < path.split('/')!.length - 2; i++) {
+                    path = parsePath(path, 'parent') as string;
+                    parents.push(paths.find(p => p == path)!);
+                }
+                return parents;
+            case "children":
+                const children = paths.filter(p => p != path && p.startsWith(path));
+                return children;
+            case "direct children":
+                const _children = parsePath(path, 'children') as string[];
+                const direct_children = _children.filter(p => parsePath(p, 'parent') === path);
+                return direct_children;
+            case "local":
+                const local = paths.filter(p => p != parsePath(path, 'root') && p.startsWith(parsePath(path, 'root') as string));
+                return local;
+        }
+    }
 </script>
