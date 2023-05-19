@@ -27,22 +27,6 @@
 <div class="menu">
     <div class="menu-head">
         <h2>Central Sociônica</h2>
-        <button class="change-theme-btn" on:click={changeTheme}>
-            <svg
-            viewBox="0 0 190.5 190.49999"
-            version="1.1"
-            class={theme}
-            xmlns="http://www.w3.org/2000/svg">
-                <path
-                id="path17429"
-                style="fill:#848484;fill-opacity:0;stroke:currentcolor;stroke-width:26.4354;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
-                d="m 153.31432,153.31432 a 82.115347,82.115347 0 0 1 -116.128638,0 82.115347,82.115347 0 0 1 -3e-6,-116.12864 82.115347,82.115347 0 0 1 116.128641,0 82.115347,82.115347 0 0 1 0,116.12864 z" />
-                <path
-                style="fill:currentcolor;fill-opacity:1;stroke:none;stroke-width:26.4354;stroke-linecap:round;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
-                d="M 37.185685,153.31432 153.31432,37.185682 c 0,0 58.06432,78.942948 0,116.128638 -58.064317,37.18568 -116.128635,0 -116.128635,0 z"
-                id="path17486" />
-            </svg>
-        </button>
     </div>
     <nav class="menu-nav">
         <Navigation/>
@@ -85,6 +69,22 @@
                 </g>
             </svg>
         </a>
+        <button class="logo-change-theme-btn" on:click={changeTheme}>
+            <svg
+            viewBox="0 0 190.5 190.49999"
+            version="1.1"
+            class={theme}
+            xmlns="http://www.w3.org/2000/svg">
+                <path
+                id="path17429"
+                style="fill:#848484;fill-opacity:0;stroke:currentcolor;stroke-width:26.4354;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+                d="m 153.31432,153.31432 a 82.115347,82.115347 0 0 1 -116.128638,0 82.115347,82.115347 0 0 1 -3e-6,-116.12864 82.115347,82.115347 0 0 1 116.128641,0 82.115347,82.115347 0 0 1 0,116.12864 z" />
+                <path
+                style="fill:currentcolor;fill-opacity:1;stroke:none;stroke-width:26.4354;stroke-linecap:round;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
+                d="M 37.185685,153.31432 153.31432,37.185682 c 0,0 58.06432,78.942948 0,116.128638 -58.064317,37.18568 -116.128635,0 -116.128635,0 z"
+                id="path17486" />
+            </svg>
+        </button>
     </div>
     <div class="navigation-container">
         <nav class="header-nav">
@@ -135,6 +135,10 @@
             .header-logo svg:hover {
                 opacity: 1;
             }
+
+        .logo-change-theme-btn {
+            display: none;
+        }
 
     .navigation-container {
         grid-column: 3;
@@ -204,10 +208,6 @@
                 place-items: center;
             }
 
-                .change-theme-btn {
-                    margin-right: 0;
-                }
-
             .menu-nav {
                 height: calc(100% - 4rem);
                 overflow-y: scroll;
@@ -252,8 +252,31 @@
                     }
 
             .header-logo {
-                margin: 0 1rem;
+                display: none;
             }
+
+            .logo-change-theme-btn {
+                background: none;
+                border: none;
+                color: none;
+                display: block;
+
+                margin: 1rem;
+            }
+
+                .logo-change-theme-btn svg {
+                    color: var(--svg-color);
+                    height: 2rem;
+                    transition: transform 0.2s ease-in-out;
+                }
+
+                    .logo-change-theme-btn svg.dark {
+                        transform: rotateZ(0deg);
+                    }
+
+                    .logo-change-theme-btn svg.light {
+                        transform: rotateZ(180deg);
+                    }
                 
         .navigation-container {
             display: none;

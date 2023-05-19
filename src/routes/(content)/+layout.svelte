@@ -101,6 +101,10 @@
             display: none;
         }
 
+        .source {
+            display: none;
+        }
+
         .article-container {
             display: block;
             min-height: 100vh;
