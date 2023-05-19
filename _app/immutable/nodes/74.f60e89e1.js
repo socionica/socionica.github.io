@@ -1,1 +1,0 @@
-import{S as o,i,s as r,q as c,r as m,b as d,H as a,h as l}from"../chunks/index.6f66fe7a.js";function u(n){let t;return{c(){t=c("Comunidade")},l(e){t=m(e,"Comunidade")},m(e,s){d(e,t,s)},p:a,i:a,o:a,d(e){e&&l(t)}}}class f extends o{constructor(t){super(),i(this,t,null,u,r,{})}}export{f as component};
