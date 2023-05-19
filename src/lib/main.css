@@ -28,6 +28,11 @@ button {
     cursor: pointer;
 }
 
+button:focus {
+    border-color: transparent;
+    box-shadow: none;
+}
+
 /* Esquema de cores */
 
 ::-webkit-scrollbar {
